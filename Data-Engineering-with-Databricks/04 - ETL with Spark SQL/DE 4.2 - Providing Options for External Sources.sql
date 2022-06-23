@@ -244,6 +244,7 @@ OPTIONS (
 
 -- COMMAND ----------
 
+-- Warning: This won't work. SQLlite can't work with spark on a cluster.
 SELECT * FROM users_jdbc
 
 -- COMMAND ----------
