@@ -199,16 +199,16 @@ def load_eltwss_external_tables():
                   f"{DA.paths.working_dir}/users-historical", True)
 
     # https://spark.apache.org/docs/latest/sql-data-sources-jdbc.html
-    (spark.read
-          .format("parquet")
-          .load(f"{DA.paths.working_dir}/users-historical")
-          .repartition(1)
-          .write
-          .format("org.apache.spark.sql.jdbc")
-          .option("url", f"jdbc:sqlite:/{DA.username}_ecommerce.db")
-          .option("dbtable", "users") # The table name in sqllight
-          .mode("overwrite")
-          .save())
+#     (spark.read
+#           .format("parquet")
+#           .load(f"{DA.paths.working_dir}/users-historical")
+#           .repartition(1)
+#           .write
+#           .format("org.apache.spark.sql.jdbc")
+#           .option("url", f"jdbc:sqlite:/{DA.username}_ecommerce.db")
+#           .option("dbtable", "users") # The table name in sqllight
+#           .mode("overwrite")
+#           .save())
 
     total = spark.read.parquet(f"{DA.paths.working_dir}/users-historical").count()
     print(f"({int(time.time())-start} seconds / {total:,} records)")
